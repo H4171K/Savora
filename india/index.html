@@ -70,11 +70,11 @@ nav ul a:hover{color:#fff}
 .pc h3{font-size:28px;color:var(--maroon);margin:10px 0 10px}
 .pc p{margin:0;color:var(--mute);font-size:16px}
 /* range */
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;align-items:end}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;align-items:start}
 .p{margin:0;text-align:center}
 .p .im{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 14px 30px -20px rgba(78,15,32,.45);transition:transform .3s,box-shadow .3s}
 .p:hover .im{transform:translateY(-6px);box-shadow:0 22px 36px -18px rgba(78,15,32,.45)}
-.p img{width:100%;height:auto}
+.p .im{aspect-ratio:4/5;display:grid;place-items:center;padding:8px;background:var(--sand)}.p img{width:100%;height:100%;object-fit:contain;border-radius:8px}
 .p h3{font-size:21px;color:var(--maroon);margin-top:12px}
 .p small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:2px}
 .full{margin-top:76px}
@@ -82,8 +82,8 @@ nav ul a:hover{color:#fff}
 .cats{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
 .cat{padding:22px 0;border-top:1px solid var(--line)}
 .cat h4{margin:0 0 8px;font:600 12px Jost;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-.cat p{margin:0;font-family:"Cormorant Garamond",serif;font-size:23px;line-height:1.45;color:var(--maroon);font-weight:600}
-.cat p i{font-style:normal;color:var(--gold);padding:0 .35em}
+.cat p{margin:0;display:flex;flex-wrap:wrap;gap:2px 26px;font-family:"Cormorant Garamond",serif;font-size:23px;line-height:1.45;color:var(--maroon);font-weight:600}
+.cat p b{font-weight:600;white-space:nowrap}.cat p span{font:500 14px Jost;color:var(--mute);letter-spacing:.02em}.cat p i{font-style:normal;color:var(--gold);padding:0 .35em}
 /* contact */
 .contact{background:linear-gradient(135deg,var(--maroon-d),var(--maroon));color:#FBF5EA;text-align:center}
 .contact h2{font-size:clamp(36px,5vw,58px);color:#F7E4B8}
@@ -188,20 +188,20 @@ footer img{height:24px;width:auto}
 
 <script>
 const G=[
-["Healthy Chips",[["Jowar Chili Tomato"],["Ragi Chips","ragi"],["Oats Chips"],["Quinoa Chips"],["Beetroot Chips","beet"],["Moongdal Chips","moong"],["Rajma Chips","rajma"],["Black Chana Chips"]]],
-["Bhujia",[["Mix Bhujia"],["Quinoa Bhujia"]]],
-["Roasted Makhana",[["Pudina","makhana-mint"],["Cream & Onion"],["Peri Peri"],["BBQ"],["Salt & Pepper"],["Pink Salt"]]],
-["Dehydrated Snacks",[["Mix Vegetable Plain"],["Mix Vegetable Chatpata","veg-chatpata"],["Fruit Chips Chatpata","fruit-chatpata"]]],
-["Paan & Digestives",[["Kacha Aam Shots"],["Calcutta Paan Red"],["Lucknavi Paan Green"],["Chulbuli Imli"]]],
-["Dried Flowers",[["Hibiscus Flower"]]],
-["Breakfast & Muesli",[["Breakfast Mix"]]],
-["Edamame",[["Light Masala","edamame-light-masala"],["Plain","edamame-plain"]]],
-["Namkeen Mixes",[["Party Mix","party-mix"],["Millet Mix"],["Korean Mix"]]],
-["Mithai",[["Anjeer Barfi"],["Protein Barfi"]]]];
+["Healthy Chips",[["Jowar Chili Tomato","150g"],["Ragi Chips","150g","ragi"],["Oats Chips","150g","oats"],["Quinoa Chips","150g","quinoa"],["Beetroot Chips","150g","beet"],["Moongdal Chips","150g","moong"],["Rajma Chips","150g","rajma"],["Black Chana Chips","150g"]]],
+["Bhujia",[["Mix Bhujia","140g"],["Quinoa Bhujia","140g"]]],
+["Roasted Makhana",[["Pudina","85g","makhana-mint"],["Cream & Onion","85g"],["Peri Peri","85g"],["BBQ","85g"],["Salt & Pepper","85g"],["Pink Salt","85g"]]],
+["Dehydrated Snacks",[["Mix Vegetable Plain","250g"],["Mix Vegetable Chatpata","250g","veg-chatpata"],["Fruit Chips Chatpata","250g","fruit-chatpata"]]],
+["Paan & Digestives",[["Kacha Aam Shots","300g"],["Calcutta Paan Red","250g"],["Lucknavi Paan Green","250g"],["Chulbuli Imli","200g"]]],
+["Dried Flowers",[["Hibiscus Flower","130g"]]],
+["Breakfast & Muesli",[["Breakfast Mix","250g"]]],
+["Edamame",[["Light Masala","200g","edamame-light-masala"],["Plain","200g","edamame-plain"]]],
+["Namkeen Mixes",[["Party Mix","175g","party-mix"],["Millet Mix","130g"],["Korean Mix","220g"]]],
+["Mithai",[["Anjeer Barfi","500g","anjeer-barfi"],["Protein Barfi","500g","protein-barfi"]]]];
 const grid=document.getElementById("grid"),cats=document.getElementById("cats");
 const esc=s=>s.replace(/&/g,"&amp;");
-grid.innerHTML=G.flatMap(([g,l])=>l.filter(x=>x[1]).map(([n,img])=>[g,n,img])).map(([g,n,img])=>`<figure class="p rv"><div class="im"><img src="images/${img}.webp" alt="Savora ${esc(n)}"></div><h3>${esc(n)}</h3><small>${esc(g)}</small></figure>`).join("");
-cats.innerHTML=G.map(([g,l])=>`<div class="cat"><h4>${esc(g)}</h4><p>${l.map(x=>esc(x[0])).join('<i>&middot;</i>')}</p></div>`).join("");
+grid.innerHTML=G.flatMap(([g,l])=>l.filter(x=>x[2]).map(([n,sz,img])=>[g,n,sz,img])).map(([g,n,sz,img])=>`<figure class="p rv"><div class="im"><img src="images/${img}.webp" alt="Savora ${esc(n)} ${sz}"></div><h3>${esc(n)}</h3><small>${sz}</small></figure>`).join("");
+cats.innerHTML=G.map(([g,l])=>`<div class="cat"><h4>${esc(g)}</h4><p>${l.map(x=>'<b>'+esc(x[0])+' <span>'+x[1]+'</span></b>').join('')}</p></div>`).join("");
 const m=document.getElementById("menu"),l=document.getElementById("links");
 m.onclick=()=>{const o=l.classList.toggle("open");m.setAttribute("aria-expanded",o)};
 l.onclick=e=>{if(e.target.closest("a"))l.classList.remove("open")};
