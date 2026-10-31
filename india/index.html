@@ -10,14 +10,14 @@
 <meta property="og:image" content="https://www.savorain.com/images/logo-gold.png">
 <link rel="icon" href="images/logo-gold.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{--maroon:#7A1A2E;--maroon-d:#4E0F20;--maroon-l:#9A2038;--gold:#B98A3E;--gold-l:#E3B96A;--cream:#FBF5EA;--sand:#F3E8D2;--ink:#2A1A10;--mute:#6B5A4A;--line:#E4D8C0}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.65 Jost,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.65 Jost,"Noto Sans Devanagari",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}a{color:inherit}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.08;margin:0}
+h1,h2,h3{font-family:"Cormorant Garamond","Tiro Devanagari Hindi",Georgia,serif;font-weight:600;line-height:1.08;margin:0}
 .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
 section{padding:96px 0}
 /* nav */
@@ -98,6 +98,20 @@ a.cg:hover{background:rgba(255,255,255,.1);border-color:var(--gold-l)}
 footer{background:#2f0a14;color:#BFA88E;padding:36px 0;font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
 footer img{height:24px;width:auto}
+/* language */
+.right{display:flex;align-items:center;gap:14px;order:3;margin-left:22px}nav ul{order:2;margin-left:auto}
+.lang{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;background:rgba(255,255,255,.14);border-radius:999px;padding:3px;cursor:pointer;border:0;font:600 12px Jost,"Noto Sans Devanagari",sans-serif;color:#F3E3C3;isolation:isolate}
+.lang span{padding:5px 12px;text-align:center;position:relative;z-index:1;transition:color .3s;letter-spacing:.06em}
+.lang:before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--gold-l);transition:transform .35s cubic-bezier(.5,.1,.2,1);z-index:0}
+html[lang=hi] .lang:before{transform:translateX(100%)}
+html:not([lang=hi]) .lang span:first-child,html[lang=hi] .lang span:last-child{color:var(--maroon-d)}
+body{transition:opacity .22s ease,filter .22s ease}body.sw{opacity:0;filter:blur(3px)}
+html[lang=hi] body{line-height:1.75}
+html[lang=hi] .eyebrow,html[lang=hi] nav ul a,html[lang=hi] .btn,html[lang=hi] .strip small,html[lang=hi] .cat h4,html[lang=hi] .p small,html[lang=hi] .cg .l{letter-spacing:0;text-transform:none}
+html[lang=hi] .eyebrow{font-size:14px}html[lang=hi] .btn{font-size:15px}html[lang=hi] nav ul a{font-size:15px}
+html[lang=hi] h1,html[lang=hi] h2,html[lang=hi] h3{line-height:1.25;letter-spacing:0}
+html[lang=hi] .hero h1{font-size:clamp(38px,5.6vw,72px)}
+html[lang=hi] .strip div.v{font-size:21px}html[lang=hi] .cat p{font-size:21px;line-height:1.55}
 /* reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -118,16 +132,16 @@ footer img{height:24px;width:auto}
 <body>
 <nav class="top"><div class="wrap">
  <a href="#top" aria-label="Savora India"><img src="images/logo-gold.png" alt="Savora"></a>
- <button class="menu" id="menu" aria-expanded="false">Menu</button>
- <ul id="links"><li><a href="#story">Our story</a></li><li><a href="#promise">Our promise</a></li><li><a href="#range">The range</a></li><li><a href="#contact">Contact</a></li></ul>
+ <div class="right"><button class="lang" id="lang" aria-label="Switch language to Hindi or English"><span>EN</span><span>हिं</span></button><button class="menu" id="menu" aria-expanded="false" data-hi="मेनू">Menu</button></div>
+ <ul id="links"><li><a href="#story" data-hi="हमारी कहानी">Our story</a></li><li><a href="#promise" data-hi="हमारा वादा">Our promise</a></li><li><a href="#range" data-hi="हमारी रेंज">The range</a></li><li><a href="#contact" data-hi="संपर्क">Contact</a></li></ul>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
  <div class="rv">
-  <div class="eyebrow">Savora India &middot; Nashik</div>
-  <h1>A better India, <em>one honest snack</em> at a time.</h1>
-  <p class="lead">Healthy, air fried snacks made in Nashik with no preservatives and no palm oil. Good for this generation, and the ones that follow.</p>
-  <div class="btns"><a class="btn solid" href="#range">Explore the range</a><a class="btn line" href="#story">Our story</a></div>
+  <div class="eyebrow" data-hi="सावोरा इंडिया &middot; नाशिक">Savora India &middot; Nashik</div>
+  <h1 data-hi="एक बेहतर भारत, <em>एक ईमानदार स्नैक</em> के साथ।">A better India, <em>one honest snack</em> at a time.</h1>
+  <p class="lead" data-hi="नाशिक में बने सेहतमंद, एयर फ्राइड स्नैक्स, बिना प्रिज़र्वेटिव और बिना पाम ऑयल के। आज की पीढ़ी के लिए अच्छे, और आने वाली पीढ़ियों के लिए भी।">Healthy, air fried snacks made in Nashik with no preservatives and no palm oil. Good for this generation, and the ones that follow.</p>
+  <div class="btns"><a class="btn solid" href="#range" data-hi="रेंज देखें">Explore the range</a><a class="btn line" href="#story" data-hi="हमारी कहानी">Our story</a></div>
  </div>
  <div class="arches rv">
   <figure><img src="images/ragi.webp" alt="Savora ragi chips" loading="eager"></figure>
@@ -137,54 +151,54 @@ footer img{height:24px;width:auto}
 </div></header>
 
 <div class="strip"><div class="wrap">
- <div class="v">No preservatives<small>Ever</small></div>
- <div class="v">No palm oil<small>Anywhere</small></div>
- <div class="v">Air fried<small>Never deep fried</small></div>
- <div class="v">Made in Nashik<small>Maharashtra</small></div>
+ <div class="v" data-hi="बिना प्रिज़र्वेटिव<small>कभी नहीं</small>">No preservatives<small>Ever</small></div>
+ <div class="v" data-hi="बिना पाम ऑयल<small>कहीं नहीं</small>">No palm oil<small>Anywhere</small></div>
+ <div class="v" data-hi="एयर फ्राइड<small>कभी डीप फ्राइड नहीं</small>">Air fried<small>Never deep fried</small></div>
+ <div class="v" data-hi="नाशिक में निर्मित<small>महाराष्ट्र</small>">Made in Nashik<small>Maharashtra</small></div>
 </div></div>
 
 <section class="story" id="story"><div class="wrap">
- <div class="rv"><div class="eyebrow">Our story</div><h2>Rooted in Nashik, built for the long run.</h2></div>
+ <div class="rv"><div class="eyebrow" data-hi="हमारी कहानी">Our story</div><h2 data-hi="नाशिक की मिट्टी से जुड़ी, लंबे सफ़र के लिए बनी।">Rooted in Nashik, built for the long run.</h2></div>
  <div class="col rv">
-  <p class="big">Savora was founded by Geeta Sehgal at the start of 2026, in the heart of Nashik.</p>
-  <p>It began with a clear conviction: the snacks families reach for every day should be made with ingredients they recognise, and should support their health rather than work against it. Savora was created to prove that healthy snacking in India can be both responsible and genuinely enjoyable.</p>
-  <p><b>Our aim</b> is to help build a healthier India through thoughtfully made snack ranges. Every Savora product is air fried instead of deep fried, and made without preservatives and without palm oil. We hold ourselves to that standard for today's generation and for the generations that come after.</p>
+  <p class="big" data-hi="सावोरा की स्थापना गीता सहगल ने 2026 की शुरुआत में नाशिक के दिल में की।">Savora was founded by Geeta Sehgal at the start of 2026, in the heart of Nashik.</p>
+  <p data-hi="इसकी शुरुआत एक स्पष्ट विश्वास से हुई: परिवार रोज़ जो स्नैक्स खाते हैं, वे ऐसी सामग्री से बनने चाहिए जिन्हें वे पहचानते हों, और जो उनकी सेहत का साथ दें, उसके ख़िलाफ़ न जाएँ। सावोरा इसलिए बनी कि यह साबित हो सके कि भारत में सेहतमंद स्नैकिंग ज़िम्मेदार भी हो सकती है और सचमुच स्वादिष्ट भी।">It began with a clear conviction: the snacks families reach for every day should be made with ingredients they recognise, and should support their health rather than work against it. Savora was created to prove that healthy snacking in India can be both responsible and genuinely enjoyable.</p>
+  <p data-hi="<b>हमारा उद्देश्य</b> सोच-समझकर बनाई गई स्नैक रेंज के ज़रिए एक सेहतमंद भारत बनाने में योगदान देना है। हर सावोरा उत्पाद डीप फ्राई नहीं, बल्कि एयर फ्राइड है, और बिना प्रिज़र्वेटिव व बिना पाम ऑयल के बनाया जाता है। हम इस मानक पर आज की पीढ़ी और आने वाली पीढ़ियों, दोनों के लिए खरे उतरते हैं।"><b>Our aim</b> is to help build a healthier India through thoughtfully made snack ranges. Every Savora product is air fried instead of deep fried, and made without preservatives and without palm oil. We hold ourselves to that standard for today's generation and for the generations that come after.</p>
   <div class="facts">
-   <div class="fact"><b>2026</b><span>Founded in Nashik by Geeta Sehgal</span></div>
-   <div class="fact"><b>Air fried</b><span>Lighter, cleaner snacking</span></div>
-   <div class="fact"><b>Pure</b><span>No preservatives, no palm oil</span></div>
+   <div class="fact"><b>2026</b><span data-hi="नाशिक में गीता सहगल द्वारा स्थापित">Founded in Nashik by Geeta Sehgal</span></div>
+   <div class="fact"><b data-hi="एयर फ्राइड">Air fried</b><span data-hi="हल्की, साफ़-सुथरी स्नैकिंग">Lighter, cleaner snacking</span></div>
+   <div class="fact"><b data-hi="शुद्ध">Pure</b><span data-hi="बिना प्रिज़र्वेटिव, बिना पाम ऑयल">No preservatives, no palm oil</span></div>
   </div>
  </div>
 </div></section>
 
 <section class="promise" id="promise"><div class="wrap">
- <div class="head rv"><div class="eyebrow">Our promise</div><h2>What goes into every pack</h2><p>Three commitments we make on every product, without exception.</p></div>
+ <div class="head rv"><div class="eyebrow" data-hi="हमारा वादा">Our promise</div><h2 data-hi="हर पैक में क्या होता है">What goes into every pack</h2><p data-hi="हर उत्पाद पर हमारे तीन वादे, बिना किसी अपवाद के।">Three commitments we make on every product, without exception.</p></div>
  <div class="cards3">
-  <div class="pc rv"><div class="n">i</div><h3>Nothing preserved</h3><p>We do not use artificial preservatives. Our snacks are made fresh in small batches and sealed with care to keep them crisp.</p></div>
-  <div class="pc rv"><div class="n">ii</div><h3>No palm oil</h3><p>Palm oil never enters our kitchen. We keep our ingredients simple, recognisable and honest.</p></div>
-  <div class="pc rv"><div class="n">iii</div><h3>Air fried, not deep fried</h3><p>Air frying gives the crunch you expect with far less oil, so every handful feels lighter and sits better.</p></div>
+  <div class="pc rv"><div class="n">i</div><h3 data-hi="कुछ भी प्रिज़र्व नहीं">Nothing preserved</h3><p data-hi="हम कृत्रिम प्रिज़र्वेटिव का उपयोग नहीं करते। हमारे स्नैक्स छोटे बैचों में ताज़ा बनते हैं और कुरकुरापन बनाए रखने के लिए सावधानी से सील किए जाते हैं।">We do not use artificial preservatives. Our snacks are made fresh in small batches and sealed with care to keep them crisp.</p></div>
+  <div class="pc rv"><div class="n">ii</div><h3 data-hi="पाम ऑयल नहीं">No palm oil</h3><p data-hi="पाम ऑयल हमारी रसोई में कभी नहीं आता। हम अपनी सामग्री सरल, जानी-पहचानी और ईमानदार रखते हैं।">Palm oil never enters our kitchen. We keep our ingredients simple, recognisable and honest.</p></div>
+  <div class="pc rv"><div class="n">iii</div><h3 data-hi="एयर फ्राइड, डीप फ्राइड नहीं">Air fried, not deep fried</h3><p data-hi="एयर फ्राइंग से मनचाहा कुरकुरापन बहुत कम तेल में मिलता है, इसलिए हर मुट्ठी हल्की लगती है और आसानी से पचती है।">Air frying gives the crunch you expect with far less oil, so every handful feels lighter and sits better.</p></div>
  </div>
 </div></section>
 
 <section id="range"><div class="wrap">
- <div class="head rv"><div class="eyebrow">The range</div><h2>The good stuff</h2><p>Small-batch snacks for modern Indian snacking, from crisp chips to traditional mithai.</p></div>
+ <div class="head rv"><div class="eyebrow" data-hi="हमारी रेंज">The range</div><h2 data-hi="सबसे अच्छी चीज़ें">The good stuff</h2><p data-hi="आधुनिक भारतीय स्नैकिंग के लिए छोटे बैच के स्नैक्स, कुरकुरी चिप्स से लेकर पारंपरिक मिठाई तक।">Small-batch snacks for modern Indian snacking, from crisp chips to traditional mithai.</p></div>
  <div class="grid" id="grid"></div>
- <div class="full rv"><h3 class="t">The full range</h3><div class="cats" id="cats"></div></div>
+ <div class="full rv"><h3 class="t" data-hi="पूरी रेंज">The full range</h3><div class="cats" id="cats"></div></div>
 </div></section>
 
 <section class="contact" id="contact"><div class="wrap">
- <div class="eyebrow" style="color:var(--gold-l)">Get in touch</div>
- <h2>Let's talk</h2>
- <p class="s">Stockist enquiries, bulk orders and product questions are all welcome.</p>
+ <div class="eyebrow" style="color:var(--gold-l)" data-hi="संपर्क करें">Get in touch</div>
+ <h2 data-hi="आइए बात करें">Let's talk</h2>
+ <p class="s" data-hi="स्टॉकिस्ट पूछताछ, थोक ऑर्डर और उत्पाद संबंधी सवालों का स्वागत है।">Stockist enquiries, bulk orders and product questions are all welcome.</p>
  <div class="cgrid">
-  <a class="cg" href="mailto:info@savorain.com"><div class="l">Email</div><div class="v">info@savorain.com</div></a>
-  <a class="cg" href="tel:+917208832877"><div class="l">Phone</div><div class="v">+91 72088 32877</div></a>
-  <div class="cg"><div class="l">Based in</div><div class="v">Nashik, Maharashtra</div></div>
+  <a class="cg" href="mailto:info@savorain.com"><div class="l" data-hi="ईमेल">Email</div><div class="v">info@savorain.com</div></a>
+  <a class="cg" href="tel:+917208832877"><div class="l" data-hi="फ़ोन">Phone</div><div class="v">+91 72088 32877</div></a>
+  <div class="cg"><div class="l" data-hi="स्थान">Based in</div><div class="v" data-hi="नाशिक, महाराष्ट्र">Nashik, Maharashtra</div></div>
  </div>
- <a class="btn gold wa" href="https://wa.me/917208832877" rel="noopener">Message us on WhatsApp</a>
+ <a class="btn gold wa" href="https://wa.me/917208832877" rel="noopener" data-hi="व्हाट्सऐप पर संदेश भेजें">Message us on WhatsApp</a>
 </div></section>
 
-<footer><div class="wrap"><img src="images/logo-gold.png" alt="Savora"><span>&copy; 2026 SS Enterprises, trading as Savora. Nashik, Maharashtra.</span></div></footer>
+<footer><div class="wrap"><img src="images/logo-gold.png" alt="Savora"><span data-hi="&copy; 2026 एस एस एंटरप्राइज़ेज़, सावोरा के नाम से व्यापार। नाशिक, महाराष्ट्र।">&copy; 2026 SS Enterprises, trading as Savora. Nashik, Maharashtra.</span></div></footer>
 
 <script>
 const G=[
@@ -200,8 +214,40 @@ const G=[
 ["Mithai",[["Anjeer Barfi","500g","anjeer-barfi"],["Protein Barfi","500g","protein-barfi"]]]];
 const grid=document.getElementById("grid"),cats=document.getElementById("cats");
 const esc=s=>s.replace(/&/g,"&amp;");
-grid.innerHTML=G.flatMap(([g,l])=>l.filter(x=>x[2]).map(([n,sz,img])=>[g,n,sz,img])).map(([g,n,sz,img])=>`<figure class="p rv"><div class="im"><img src="images/${img}.webp" alt="Savora ${esc(n)} ${sz}"></div><h3>${esc(n)}</h3><small>${sz}</small></figure>`).join("");
-cats.innerHTML=G.map(([g,l])=>`<div class="cat"><h4>${esc(g)}</h4><p>${l.map(x=>'<b>'+esc(x[0])+' <span>'+x[1]+'</span></b>').join('')}</p></div>`).join("");
+const HI={"Healthy Chips":"सेहतमंद चिप्स","Bhujia":"भुजिया","Roasted Makhana":"भुना मखाना","Dehydrated Snacks":"डिहाइड्रेटेड स्नैक्स","Paan & Digestives":"पान और पाचक","Dried Flowers":"सूखे फूल","Breakfast & Muesli":"नाश्ता और म्यूसली","Edamame":"एडामामे","Namkeen Mixes":"नमकीन मिक्स","Mithai":"मिठाई",
+"Jowar Chili Tomato":"ज्वार चिली टमाटर","Ragi Chips":"रागी चिप्स","Oats Chips":"ओट्स चिप्स","Quinoa Chips":"क्विनोआ चिप्स","Beetroot Chips":"चुकंदर चिप्स","Moongdal Chips":"मूंगदाल चिप्स","Rajma Chips":"राजमा चिप्स","Black Chana Chips":"काला चना चिप्स",
+"Mix Bhujia":"मिक्स भुजिया","Quinoa Bhujia":"क्विनोआ भुजिया","Pudina":"पुदीना","Cream & Onion":"क्रीम और प्याज़","Peri Peri":"पेरी पेरी","BBQ":"बारबेक्यू","Salt & Pepper":"नमक और काली मिर्च","Pink Salt":"गुलाबी नमक",
+"Mix Vegetable Plain":"मिक्स वेजिटेबल प्लेन","Mix Vegetable Chatpata":"मिक्स वेजिटेबल चटपटा","Fruit Chips Chatpata":"फ्रूट चिप्स चटपटा","Kacha Aam Shots":"कच्चा आम शॉट्स","Calcutta Paan Red":"कलकत्ता पान लाल","Lucknavi Paan Green":"लखनवी पान हरा","Chulbuli Imli":"चुलबुली इमली",
+"Hibiscus Flower":"गुड़हल का फूल","Breakfast Mix":"ब्रेकफास्ट मिक्स","Light Masala":"लाइट मसाला","Plain":"प्लेन","Party Mix":"पार्टी मिक्स","Millet Mix":"मिलेट मिक्स","Korean Mix":"कोरियन मिक्स","Anjeer Barfi":"अंजीर बर्फ़ी","Protein Barfi":"प्रोटीन बर्फ़ी"};
+let LANG="en";
+const T=(n)=>LANG==="hi"&&HI[n]||n;
+function renderRange(){
+grid.innerHTML=G.flatMap(([g,l])=>l.filter(x=>x[2]).map(([n,sz,img])=>[g,n,sz,img])).map(([g,n,sz,img])=>`<figure class="p in"><div class="im"><img src="images/${img}.webp" alt="Savora ${esc(n)} ${sz}"></div><h3>${esc(T(n))}</h3><small>${sz}</small></figure>`).join("");
+cats.innerHTML=G.map(([g,l])=>`<div class="cat"><h4>${esc(T(g))}</h4><p>${l.map(x=>'<b>'+esc(T(x[0]))+' <span>'+x[1]+'</span></b>').join('')}</p></div>`).join("");
+}
+function applyText(){
+document.querySelectorAll("[data-hi]").forEach(e=>{if(!e.dataset.en)e.dataset.en=e.innerHTML;e.innerHTML=LANG==="hi"?e.dataset.hi:e.dataset.en});
+document.documentElement.lang=LANG;
+document.title=LANG==="hi"?"सावोरा इंडिया | सेहतमंद, एयर फ्राइड स्नैक्स":window.TITLE_EN;
+renderRange();
+}
+window.TITLE_EN=document.title;
+function setLang(x,save){
+if(x===LANG)return;
+document.body.classList.add("sw");
+setTimeout(()=>{LANG=x;applyText();document.body.classList.remove("sw")},230);
+if(save){try{localStorage.setItem("sv_lang",x)}catch(e){}}
+}
+let chosen=false;
+try{chosen=!!localStorage.getItem("sv_lang")}catch(e){}
+document.getElementById("lang").onclick=()=>{chosen=true;clearInterval(auto);setLang(LANG==="hi"?"en":"hi",true)};
+let start="en";
+try{const sv=localStorage.getItem("sv_lang");start=sv||((navigator.language||"").toLowerCase().startsWith("hi")?"hi":"en")}catch(e){}
+renderRange();
+if(start==="hi"){LANG="hi";applyText()}
+/* gentle auto-flip every 30s, only for first-time visitors resting at the top of the page */
+const auto=setInterval(()=>{if(chosen||document.hidden||scrollY>80)return;setLang(LANG==="hi"?"en":"hi",false)},30000);
+document.addEventListener("scroll",()=>{if(scrollY>80)chosen=chosen},{passive:true});
 const m=document.getElementById("menu"),l=document.getElementById("links");
 m.onclick=()=>{const o=l.classList.toggle("open");m.setAttribute("aria-expanded",o)};
 l.onclick=e=>{if(e.target.closest("a"))l.classList.remove("open")};
